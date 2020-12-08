@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package comment;
+
+service Comment {
+	rpc New(NewRequest) returns (NewResponse) {}
+	rpc List(ListRequest) returns (ListResponse) {}
+}
+
+message CommentItem {
+	string id = 1;
+	string post = 2;
+	string author = 3;
+	string message = 4;
+	int64 created = 5;
+}
+
+message NewRequest {
+	string post = 1;
+	string author = 2;
+	string message = 3;
+}
+
+message NewResponse {}
+
+message ListRequest{
+	string post = 1;
+}
+
+message ListResponse{
+	repeated CommentItem comments = 1;
+}
